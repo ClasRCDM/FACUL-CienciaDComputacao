@@ -2,12 +2,16 @@
 
 import java.util.Scanner;
 
-public class Eventos {
+public class CadastroDeEventos {
+    // Variaveis -- >
+    // Main
     private static char log;
+
     // Usuário - Cadastro
     private static String us_nome;
     private static int us_idade;
     private static char us_sexo;
+
     // Eventos - Cadastro
     private static String ev_nome;
     private static String ev_endereco;
@@ -15,7 +19,7 @@ public class Eventos {
     private static String ev_horario;
     private static String ev_descricao;
 
-    // Program --
+    // Program_main --
     public static void main(String[] args) {
         Scanner getkeyboard = new Scanner(System.in);
         System.out.println("< ----- Cadastros! ----- >");
@@ -47,6 +51,7 @@ public class Eventos {
         System.out.println("\nPrograma encerrado...");
     }
 
+    // Cadastra o Usuário. --
     public static void CadastroUsuario() {
         Scanner getkeyboard = new Scanner(System.in);
         System.out.println("\n----- < Cadastre um usuário > -----");
@@ -82,6 +87,7 @@ public class Eventos {
         System.out.println("");
     }
 
+    // Cria os eventos. --
     public static void CadastroEventos() {
         Scanner getkeyboard = new Scanner(System.in);
         System.out.println("\n< ----- Cadastre um Evento! ----- >");
@@ -121,9 +127,10 @@ public class Eventos {
             }
         }while(noBreak);
         System.out.println("");
+    }
 
-        public static void ConsultaEventos() {
+    // Consulta os eventos criados caso exista algum. --
+    public static void ConsultaEventos() {
 
-        }
     }
 }
