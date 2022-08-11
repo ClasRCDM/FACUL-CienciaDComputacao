@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class CadastroDeEventos {
     // Variaveis -- >
+    private static Scanner getkeyboard = new Scanner(System.in);
     // Usuário - Cadastro
     private static String us_nome;
     private static int us_idade;
@@ -34,18 +35,15 @@ public class CadastroDeEventos {
 
     // Cadastra o Usuário. --
     public static void CadastroUsuario() {
-        Scanner getkeyboard = new Scanner(System.in);
         System.out.println("\n----- < Cadastre um usuário > -----");
 
         do{
-            System.out.print("Digite seu nome:\t");
-            us_nome = getkeyboard.nextLine();
+            us_nome = inputs("Digite seu nome:");
         }while(us_nome.length() < 6 || us_nome.length() > 20);
 
         boolean noBreak = true;
         do{
-            System.out.print("Digite sua idade:\t");
-            us_idade = getkeyboard.nextInt();
+            us_idade = inputi("Digite sua Idade:");
 
             if (us_idade > 13) {
                 noBreak = false;
@@ -56,8 +54,7 @@ public class CadastroDeEventos {
 
         noBreak = true;
         do{
-            System.out.print("Digite seu sexo: [M/F]\t");
-            us_sexo = Character.toUpperCase(getkeyboard.next().charAt(0));
+            us_sexo = inputc("Digite seu sexo: [M/F]\t");
 
             if (us_sexo != 'A' && us_sexo == 'M' || us_sexo == 'F') {
                 noBreak = false;
@@ -68,9 +65,22 @@ public class CadastroDeEventos {
         System.out.println("");
     }
 
+    // Metodos
+    public static String inputs(String pergunta) {
+        System.out.print(pergunta + "\t");
+        return getkeyboard.nextLine();
+    }
+    public static int inputi(String pergunta) {
+        System.out.print(pergunta + "\t");
+        return getkeyboard.nextInt();
+    }
+    public static char inputc(String pergunta) {
+        System.out.print(pergunta + "\t");
+        return getkeyboard.next().charAt(0);
+    }
+
     // Cria os eventos. --
     public static void CadastroEventos() {
-        Scanner getkeyboard = new Scanner(System.in);
         System.out.println("\n< ----- Cadastre um Evento! ----- >");
 
         do{
@@ -117,9 +127,9 @@ public class CadastroDeEventos {
 }
 
 public class Funcoes {
-    public static boolean Cadastrar(String pergunta, char log) {
-        Scanner getkeyboard = new Scanner(System.in);
+    private static Scanner getkeyboard = new Scanner(System.in);
 
+    public static boolean Cadastrar(String pergunta, char log) {
         do{
             System.out.print(pergunta);
             log = Character.toUpperCase(getkeyboard.next().charAt(0));
