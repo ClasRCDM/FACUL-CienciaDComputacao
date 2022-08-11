@@ -4,9 +4,6 @@ import java.util.Scanner;
 
 public class CadastroDeEventos {
     // Variaveis -- >
-    // Main
-    private static char log;
-
     // Usuário - Cadastro
     private static String us_nome;
     private static int us_idade;
@@ -21,34 +18,18 @@ public class CadastroDeEventos {
 
     // Program_main --
     public static void main(String[] args) {
-        Scanner getkeyboard = new Scanner(System.in);
         System.out.println("< ----- Cadastros! ----- >");
 
-        do{
-            System.out.print("Deseja adicionar um Usuário? [S/N]: ");
-            log = Character.toUpperCase(getkeyboard.next().charAt(0));
+        Funcoes Cadastros = new Funcoes();
+        char log = ' ';
 
-            if (log == 'S') {
-                CadastroUsuario();
-            }
-        }while(log != 'N');
-        do{
-            System.out.print("Deseja criar um Evento? [S/N]: ");
-            log = Character.toUpperCase(getkeyboard.next().charAt(0));
-
-            if (log == 'S') {
-                CadastroEventos();
-            }
-        }while(log != 'N');
-        do{
-            System.out.print("Deseja consultar os eventos? [S/N]: ");
-            log = Character.toUpperCase(getkeyboard.next().charAt(0));
-
-            if (log == 'S') {
-                CadastroEventos();
-            }
-        }while(log != 'N');
-        System.out.println("\nPrograma encerrado...");
+        if (Cadastros.Cadastrar("Deseja adicionar um Usuário? [S/N]: ", log)) {
+            CadastroUsuario();
+        } else if (Cadastros.Cadastrar("Deseja criar um Evento? [S/N]: ", log)) {
+            CadastroEventos();
+        } else if (Cadastros.Cadastrar("Deseja consultar os eventos? [S/N]: ", log)) {
+            ConsultaEventos();
+        }
     }
 
     // Cadastra o Usuário. --
@@ -132,5 +113,21 @@ public class CadastroDeEventos {
     // Consulta os eventos criados caso exista algum. --
     public static void ConsultaEventos() {
 
+    }
+}
+
+public class Funcoes {
+    public static boolean Cadastrar(String pergunta, char log) {
+        Scanner getkeyboard = new Scanner(System.in);
+
+        do{
+            System.out.print(pergunta);
+            log = Character.toUpperCase(getkeyboard.next().charAt(0));
+
+            if (log == 'S') {
+                return true;
+            }
+        }while(log != 'N');
+        return false;
     }
 }
