@@ -16,7 +16,7 @@ do --:function_table
     -- Função | -- <<- Trata o tipo ->> --
     function POO:tip(tips) --:string
         while true do -- ->>
-            if type(string.match(tips.value, '%d+')) == nil then
+            if type(string.match(tips.value, '%d+')) == 'string' then
                 print(tips.msg_error)
 
                 io.write(tips.msg) tips.value = self:trat({
@@ -29,7 +29,7 @@ do --:function_table
                 break
             end
         end
-        return tips -- <<-
+        return tips.value -- <<-
     end
 
     -- Função | -- <<- Tratamento de tipos ->> --

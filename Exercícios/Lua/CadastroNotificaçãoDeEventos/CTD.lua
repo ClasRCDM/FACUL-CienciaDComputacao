@@ -48,16 +48,20 @@ do -- Main program --
                         msg_error = 'Porfavor escreva seu nome!!'
                     }),
                     io.write('Idade: '); idade = p:trat({
-                        tipo = "",
-                        value = io.read('*line')
+                        tipo = "int",
+                        value = io.read('*line'),
+                        msg = 'Idade: ',
+                        msg_error = 'Porfavor apenas números!'
                     }),
                     io.write('Sexo: '); genero = p:trat({
-                        tipo = "",
-                        value = io.read('*line')
+                        tipo = "char",
+                        value = io.read('*line'),
+                        msg = 'Sexo: ',
+                        msg_error = 'Use Masculino ou Feminino -> [F/M]'
                     })
                 })
+
                 table.insert(self.usuarios, usuario)
-                print(usuario[2].nome)
                 cads = 'N'
             else
                 p:printt('Você já contem um usuário salvo...')
