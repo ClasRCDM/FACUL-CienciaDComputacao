@@ -1,9 +1,13 @@
 -- Cadastro de Notificação de Eventos --
-do
-    -- Classe | main -- >>
-    local CTDe = {} CTDe.__index = CTDe
+do -- Main program --
 
-    function CTDe.novo(name)
+    -- Imports...
+    local user, event = require('ClassE_U')
+
+    -- Classe | main -- >>
+    local CTDe = {} CTDe.__index = CTDe -- Table:Class
+
+    function CTDe.novo(name) --:Class_table
         local instancia = setmetatable({}, CTDe)
         -- ->> --------------- <<- --
         instancia.name = name
@@ -11,12 +15,25 @@ do
         return instancia
     end
 
-    function CTDe:runEvents()
+    -- Inicia o Casdastro de Eventos --
+    function CTDe:runEvents() --:None
         print(self.name)
+    end
+
+    -- Cadastra o Usuário --
+    function CTDe:userRegistration() --:None
+        print('Registro de usuario')
+    end
+
+    -- Cadastra o Evento --
+    function CTDe:eventRegistration() --:None
+        print('Registro de eventos')
     end
     -- <<
 
     -- Classe | Chamada -- >>
     local CadastroDeEventos = CTDe.novo('Boas vindas')
     CadastroDeEventos:runEvents()
+    CadastroDeEventos:userRegistration()
+    CadastroDeEventos:eventRegistration()
 end
