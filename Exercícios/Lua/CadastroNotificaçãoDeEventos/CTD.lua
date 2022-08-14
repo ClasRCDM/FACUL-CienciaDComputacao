@@ -4,39 +4,81 @@ do -- Main program --
     -- Imports...
     local user, event = require('ClassE_U')
 
-    local c = require "colors"
     local p = require "POO"
 
     -- Classe | main -- ->>
     local CTDe = {} CTDe.__index = CTDe -- Table:Class
 
-    function CTDe.novo(name) --:Class_table
+    function CTDe.novo() --:Class_table
         local instancia = setmetatable({}, CTDe)
         -- ->> --------------- <<- --
-        print('\t->> __Cadastro de Eventos__ <<-')
+        p:printt('->> __Cadastro de Eventos__ <<-' .. '\n')
+
+        instancia.usuarios = {
+            usuario1 = {
+                nome = 'Raphael',
+                idade = 19,
+                genero = 'M'
+            }
+        } --:Table
+        instancia.eventos = {} --:Table
 
         return instancia
     end
 
     -- Inicia o Casdastro de Eventos --
     function CTDe:runEvents() --:None
-        p:printf('Testando o %s...', self.name)
-        self.userRegistration()
-        self.eventRegistration()
+        self:userRegistration()
+        self:eventRegistration()
     end
 
     -- Cadastra o Usuário --
-    function CTDe:userRegistration() --:None
-        print('Registro de usuario')
+    function CTDe:userRegistration() --:Set_usuário
+        -- ->> --------------- <<- --
+        local cads = 'None'
+        while true do
+            if self.usuarios == 0 or cads == 'S' then
+                print(' - Cadastre um Usuário...')
+
+                local usuario = user.nv({
+                    io.write('Nome: '); nome = p:trat({
+                        tipo = "string",
+                        value = io.read('*line'),
+                        msg = 'Nome: ',
+                        msg_error = 'Porfavor escreva seu nome!!'
+                    }),
+                    io.write('Idade: '); idade = p:trat({
+                        tipo = "",
+                        value = io.read('*line')
+                    }),
+                    io.write('Sexo: '); genero = p:trat({
+                        tipo = "",
+                        value = io.read('*line')
+                    })
+                })
+                table.insert(self.usuarios, usuario)
+                print(usuario[2].nome)
+                cads = 'N'
+            else
+                p:printt('Você já contem um usuário salvo...')
+
+                io.write('Gostaria de gadastrar um novo usuário? ')
+                cads = string.upper(p:no_space(io.read('*line')))
+
+                if cads == 'N' then
+                    break
+                end
+            end
+        end
     end
 
     -- Cadastra o Evento --
-    function CTDe:eventRegistration() --:None
-        print('Registro de eventos')
+    function CTDe:eventRegistration() --:Table_eventos
+        -- pass
     end
     -- <<-
 
     -- Classe | Chamada -- ->> <<-
-    local CadastroDeEventos = CTDe.novo('Boas vindas')
+    local CadastroDeEventos = CTDe.novo()
     CadastroDeEventos:runEvents()
 end
