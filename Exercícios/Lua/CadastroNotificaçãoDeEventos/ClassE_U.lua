@@ -4,12 +4,12 @@ do --:Class_table
     -- Usuário | main -- >>
     local Usuario = {} Usuario.__index = Usuario -- Table:Class
 
-    function Usuario.nv(nome, idade, genero) --:Class_table
+    function Usuario.nv(caract) --:Class_table
         local itc = setmetatable({}, Usuario)
         -- ->> --------------- <<- --
-        itc.nome = nome --:string
-        itc.idade = idade --:int
-        itc.genero = genero --:char
+        itc.nome = caract.nome or 'None' --:string
+        itc.idade = caract.idade or 'None' --:int
+        itc.genero = caract.genero or 'None'--:char
 
         return itc
     end
@@ -17,14 +17,14 @@ do --:Class_table
     -- Evento | main -- >>
     local Evento = {} Evento.__index = Evento -- Table:Class
 
-    function Evento.nv(nome, idade, genero) --:Class_table
+    function Evento.nv(desct) --:Class_table
         local itc = setmetatable({}, Evento)
         -- ->> --------------- <<- --
-        itc.nome = nome --:string
-        itc.endereco = endereco --:string
-        itc.categoria = categoria --:char
-        itc.horario = horario --:int
-        itc.descricao = descricao --:string
+        itc.nome = desct.nome or 'None' --:string
+        itc.endereco = desct.endereco or 'None' --:string
+        itc.categoria = desct.categoria or 'None' --:char
+        itc.horario = desct.horario or 'None' --:int
+        itc.descricao = desct.descricao or 'None' --:string
 
         return itc
     end
