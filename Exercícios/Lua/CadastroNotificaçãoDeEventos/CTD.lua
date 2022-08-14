@@ -3,6 +3,7 @@ do -- Main program --
 
     -- Imports...
     local user, event = require('ClassE_U')
+    local p = require "POO"
 
     -- Classe | main -- >>
     local CTDe = {} CTDe.__index = CTDe -- Table:Class
@@ -17,7 +18,9 @@ do -- Main program --
 
     -- Inicia o Casdastro de Eventos --
     function CTDe:runEvents() --:None
-        print(self.name)
+        p:printf('Testando o %s...', self.name)
+        self.userRegistration()
+        self.eventRegistration()
     end
 
     -- Cadastra o Usuário --
@@ -34,6 +37,4 @@ do -- Main program --
     -- Classe | Chamada -- >>
     local CadastroDeEventos = CTDe.novo('Boas vindas')
     CadastroDeEventos:runEvents()
-    CadastroDeEventos:userRegistration()
-    CadastroDeEventos:eventRegistration()
 end
