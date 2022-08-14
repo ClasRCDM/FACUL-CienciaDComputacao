@@ -5,6 +5,7 @@ do
 
     function CTDe.novo(name)
         local instancia = setmetatable({}, CTDe)
+        -- ->> --------------- <<- --
         instancia.name = name
 
         return instancia
@@ -15,6 +16,7 @@ do
     end
     -- <<
 
+    -- Classe | Chamada -- >>
     local CadastroDeEventos = CTDe.novo('Boas vindas')
     CadastroDeEventos:runEvents()
 end
