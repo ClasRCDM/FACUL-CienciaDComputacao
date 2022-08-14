@@ -1,7 +1,7 @@
 -- Cadastros Gerais --
 do --:Class_table
 
-    -- Usuário | main -- >>
+    -- Usuário | main -- ->>
     local Usuario = {} Usuario.__index = Usuario -- Table:Class
 
     function Usuario.nv(caract) --:Class_table
@@ -13,8 +13,9 @@ do --:Class_table
 
         return itc
     end
+    -- <<-
 
-    -- Evento | main -- >>
+    -- Evento | main -- ->>
     local Evento = {} Evento.__index = Evento -- Table:Class
 
     function Evento.nv(desct) --:Class_table
@@ -28,7 +29,7 @@ do --:Class_table
 
         return itc
     end
-    -- <<
+    -- <<-
 
     return Usuario, Evento --:Tables
 end

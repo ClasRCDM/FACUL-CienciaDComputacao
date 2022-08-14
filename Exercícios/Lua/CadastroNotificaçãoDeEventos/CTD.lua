@@ -3,15 +3,17 @@ do -- Main program --
 
     -- Imports...
     local user, event = require('ClassE_U')
+
+    local c = require "colors"
     local p = require "POO"
 
-    -- Classe | main -- >>
+    -- Classe | main -- ->>
     local CTDe = {} CTDe.__index = CTDe -- Table:Class
 
     function CTDe.novo(name) --:Class_table
         local instancia = setmetatable({}, CTDe)
         -- ->> --------------- <<- --
-        instancia.name = name
+        print('\t->> __Cadastro de Eventos__ <<-')
 
         return instancia
     end
@@ -32,9 +34,9 @@ do -- Main program --
     function CTDe:eventRegistration() --:None
         print('Registro de eventos')
     end
-    -- <<
+    -- <<-
 
-    -- Classe | Chamada -- >>
+    -- Classe | Chamada -- ->> <<-
     local CadastroDeEventos = CTDe.novo('Boas vindas')
     CadastroDeEventos:runEvents()
 end
