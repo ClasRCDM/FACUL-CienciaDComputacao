@@ -14,13 +14,7 @@ do -- Main program --
         -- ->> --------------- <<- --
         p:printt('->> __Cadastro de Eventos__ <<-' .. '\n')
 
-        instancia.usuarios = {
-            usuario1 = {
-                nome = 'Raphael',
-                idade = 19,
-                genero = 'M'
-            }
-        } --:Table
+        instancia.usuarios = {} --:Table
         instancia.eventos = {} --:Table
 
         return instancia
@@ -37,7 +31,7 @@ do -- Main program --
         -- ->> --------------- <<- --
         local cads = 'None'
         while true do
-            if self.usuarios == 0 or cads == 'S' then
+            if #self.usuarios == 0 or cads == 'S' then
                 print(' - Cadastre um Usuário...')
 
                 local usuario = user.nv({
