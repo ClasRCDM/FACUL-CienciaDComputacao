@@ -17,7 +17,7 @@ do --:function_table
     function POO:log(...) io.write(...) end --:string
 
     -- Função | -- Trata o tipo ->>
-    function POO:tipif(tips) --:Table
+    function POO:tipif(tips) --:Table =>>
         print(tips.msg_error)
         -- ->> --------------- <<- --
         self:log(tips.msg) tips.value = self:trat({
@@ -26,20 +26,24 @@ do --:function_table
             msg = tips.msg,
             msg_error = tips.msg_error
         })
-        return tips.value -- <<-
+        return tips.value -- <<=
     end
 
-    function POO:tip(tips, tip) --:string
-        while true do -- ->>
-            if tip == 'int' and type(string.match(tips.value, '%d+')) ~= 'string' then
-                tips = tonumber(self:tipif(tips))
-            elseif tip == 'string' and type(string.match(tips.value, '%d+')) == tip then
+    function POO:tip(tips, tip) --:string =>>
+        while true do
+            if tip == 'int' then
+                local r_isnumber = tonumber(tips.value) == nil
+                local r_thisnumber = type(string.match(tips.value, '%d+')) ~= 'string'
+
+                if not r_thisnumber and r_isnumber then
+                    tips = self:tipif(tips)
+                else break end
+            elseif type(string.match(tips.value, '%d+')) == tip then
                 tips = self:tipif(tips)
-            else break
-            end
+            else break end
         end
-        return tips -- <<-
-    end
+        return tips.value -- <<=
+    end -- <<-
 
     -- Função | -- <<- Tratamento de tipos ->> --
     function POO:trat(v) --:Table_string
