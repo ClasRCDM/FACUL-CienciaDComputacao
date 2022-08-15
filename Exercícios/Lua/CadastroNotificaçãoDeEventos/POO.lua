@@ -37,12 +37,14 @@ do --:function_table
 
                 if not r_thisnumber and r_isnumber then
                     tips = self:tipif(tips)
+                elseif r_thisnumber then
+                    tips = self:tipif(tips)
                 else break end
             elseif type(string.match(tips.value, '%d+')) == tip then
                 tips = self:tipif(tips)
             else break end
         end
-        return tips.value -- <<=
+        return tips -- <<=
     end -- <<-
 
     -- Função | -- <<- Tratamento de tipos ->> --

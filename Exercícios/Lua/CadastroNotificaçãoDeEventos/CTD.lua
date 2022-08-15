@@ -19,6 +19,8 @@ do -- Main program --
         instancia.usuarios = {} --:Table
         instancia.eventos = {} --:Table
 
+        instancia.cads = nil --:char
+
         return instancia
     end
 
@@ -31,13 +33,14 @@ do -- Main program --
     -- Cadastra o Usuário --
     function CTDe:userRegistration() --:Set_usuário
         -- ->> --------------- <<- --
-        local cads = nil
-        prs:registrationUser(self.usuarios, cads, user, p)
+        prs:registrationUser(self.usuarios, self.cads, user, p)
     end
 
     -- Cadastra o Evento --
-    function CTDe:eventRegistration() --:Table_eventos
-        -- pass
+    function CTDe:eventRegistration() --:Set_eventos
+        -- ->> --------------- <<- --
+        print('')
+        prs:registrationEvent(self.eventos, self.cads, p)
     end
     -- <<-
 

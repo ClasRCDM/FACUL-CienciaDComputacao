@@ -5,7 +5,7 @@ do --:function_table
 
     -- Função | -- Trata o tipo ->>
     function PROcc:registrationUser(usuarios, cads, user, p) --:Table =>>
-        local usuario = nil
+        local usuario = nil --:Table
         -- ->> --------------- <<- --
         while true do
             if #usuarios == 0 or cads == 'S' then
@@ -32,6 +32,7 @@ do --:function_table
                     })
                 })
 
+                print(usuario.idade)
                 table.insert(usuarios, usuario)
                 cads = 'N'
             else
@@ -40,9 +41,24 @@ do --:function_table
                 io.write('Gostaria de gadastrar um novo usuário? ')
                 cads = string.upper(p:no_space(io.read('*line')))
 
-                if cads == 'N' then
-                    break
-                end
+                if cads == 'N' then break end
+            end
+        end
+    end -- <<=
+
+    function PROcc:registrationEvent(eventos, cads, p) --:Table =>>
+        local evento = nil --:Table
+        -- ->> --------------- <<- --
+        while true do
+            if #eventos == 0 or cads == 'S' then
+                print(' - Cadastre um Evento...')
+            else
+                p:printt('Você já contem '.. #eventos .. ' eventos ' ..'cadastrados...')
+
+                io.write('Gostaria de gadastrar mais um evento? ')
+                cads = string.upper(p:no_space(io.read('*line')))
+
+                if cads == 'N' then break end
             end
         end
     end
