@@ -13,12 +13,14 @@ do --:function_table
     -- Função | -- <<- Remove espaços ->> --
     function POO:no_space(s) return s:match( "^%s*(.-)%s*$" ) end --:string
 
+    -- Função | -- <<- io.write ->> --
+    function POO:log(...) io.write(...) end --:string
+
     -- Função | -- <<- Trata o tipo ->> --
     function POO:tipif(tips) --:Table
-        print(type(string.match(tips.value, '%d+')))
         print(tips.msg_error)
 
-        io.write(tips.msg) tips.value = self:trat({
+        self:log(tips.msg) tips.value = self:trat({
             tipo = tips.tipo,
             value = io.read('*line'),
             msg = tips.msg,
@@ -29,16 +31,10 @@ do --:function_table
 
     function POO:tip(tips, tip) --:string
         while true do -- ->>
-            if tip == 'int' then
-                if type(string.match(tips.value, '%d+')) ~= 'string' then
-                    tips = self:tipif(tips)
-                else break
-                end
-            elseif tip == 'string' then
-                if type(string.match(tips.value, '%d+')) == tip then
-                    tips = self:tipif(tips)
-                else break
-                end
+            if tip == 'int' and type(string.match(tips.value, '%d+')) ~= 'string' then
+                tips = self:tipif(tips)
+            elseif tip == 'string' and type(string.match(tips.value, '%d+')) == tip then
+                tips = self:tipif(tips)
             else break
             end
         end

@@ -41,23 +41,23 @@ do -- Main program --
                 print(' - Cadastre um Usuário...')
 
                 local usuario = user.nv({
-                    io.write('Nome: '); nome = p:trat({
+                    p:log('Nome: '); nome = p:trat({
                         tipo = "string",
                         value = io.read('*line'),
                         msg = 'Nome: ',
                         msg_error = 'Porfavor escreva seu nome!!'
                     }),
-                    io.write('Idade: '); idade = p:trat({
+                    p:log('Idade: '); idade = p:trat({
                         tipo = "int",
                         value = io.read('*line'),
                         msg = 'Idade: ',
                         msg_error = 'Porfavor apenas números!'
                     }),
-                    io.write('Sexo: '); genero = p:trat({
+                    p:log('Sexo: '); genero = p:trat({
                         tipo = "char",
                         value = io.read('*line'),
                         msg = 'Sexo: ',
-                        msg_error = 'Use Masculino ou Feminino -> [F/M]'
+                        msg_error = 'Use masculino ou Feminino -> [F/M]'
                     })
                 })
 
