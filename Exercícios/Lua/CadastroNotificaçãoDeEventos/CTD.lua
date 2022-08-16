@@ -32,6 +32,7 @@ do -- Main program --
 
     -- Cadastra o Usuário --
     function CTDe:userRegistration() --:Set_usuário
+        print(' - Cadastre um Usuário...')
         -- ->> --------------- <<- --
         prs:registrationUser(self.usuarios, self.cads, user, p)
     end

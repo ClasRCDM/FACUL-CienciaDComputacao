@@ -29,9 +29,19 @@ do --:function_table
         return tips.value -- <<=
     end
 
-    function POO:tip(tips, tip) --:string =>>
-        while true do
-            if tip == 'int' then
+    function POO:tip(tips, tip) --:Table_string =>>
+        local function isalpha(tipo) return type(string.match(tips.value, '%d+')) == tipo end
+        -- ->> --------------- <<- --
+        while true do -- Loop
+            -- Trata erros | Strings --
+            if isalpha(tip) then
+                tips = self:tipif(tips)
+            elseif tip == 'char' and #tips.value > 1 then
+                if tips.value ~= 'F' or tips.value ~= 'M' and isalpha(tip) then
+                    tips = self:tipif(tips)
+                else break end
+            -- Trata erros | Int --
+            elseif tip == 'int' then
                 local r_isnumber = tonumber(tips.value) == nil
                 local r_thisnumber = type(string.match(tips.value, '%d+')) ~= 'string'
 
@@ -40,8 +50,6 @@ do --:function_table
                 elseif r_thisnumber then
                     tips = self:tipif(tips)
                 else break end
-            elseif type(string.match(tips.value, '%d+')) == tip then
-                tips = self:tipif(tips)
             else break end
         end
         return tips -- <<=

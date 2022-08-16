@@ -9,8 +9,6 @@ do --:function_table
         -- ->> --------------- <<- --
         while true do
             if #usuarios == 0 or cads == 'S' then
-                print(' - Cadastre um Usuário...')
-
                 usuario = user.nv({
                     p:log('Nome: '); nome = p:trat({
                         tipo = "string",
@@ -23,7 +21,7 @@ do --:function_table
                         value = io.read('*line'),
                         msg = 'Idade: ',
                         msg_error = 'Porfavor apenas números!'
-                    }),
+                    }).value,
                     p:log('Sexo: '); genero = p:trat({
                         tipo = "char",
                         value = io.read('*line'),
