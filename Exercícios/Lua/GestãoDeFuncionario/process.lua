@@ -11,18 +11,18 @@ do --:function_table
             if #usuarios == 0 or cads == 'S' then
                 usuario = user.nv({
                     p:log('Nome: '); nome = p:trat_string({
-                        msg = 'Nome: ',
                         value = io.read('*line'),
+                        msg = 'Nome: ',
                         msg_error = 'Porfavor escreva seu nome!!'
                     }),
                     p:log('Idade: '); idade = p:trat_int({
-                        msg = 'Idade: ',
                         value = io.read('*line'),
+                        msg = 'Idade: ',
                         msg_error = 'Porfavor apenas números!'
                     }).value,
                     p:log('Sexo: '); genero = p:trat_char({
-                        msg = 'Sexo: ',
                         value = io.read('*line'),
+                        msg = 'Sexo: ',
                         msg_error = 'Use masculino ou Feminino -> [F/M]'
                     })
                 })

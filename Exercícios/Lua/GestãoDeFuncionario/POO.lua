@@ -21,8 +21,8 @@ do --:function_table
         -- ->> --------------- <<- --
         tips =
         {
-            msg = tips.msg,
             value = io.read('*line'),
+            msg = tips.msg,
             msg_error = tips.msg_error
         }
         return tips -- <<=
@@ -35,7 +35,7 @@ do --:function_table
         -- ->> --------------- <<- --
         while true do -- Loop
             -- Trata erros | Strings --
-            if isalpha('string', ts.value) or ts.value == '' then
+            if isalpha('string', ts.value) then
                 print(ts.msg_error)
                 self:log(ts.msg) ts = self:trat_string(back(ts))
             else break end
@@ -76,7 +76,7 @@ do --:function_table
     -- Função | -- <<- Tratamento de strigs ->> --
     function POO:trat_string(v) --:Table_string
         v.value = self:no_space(v.value)
-        return self:tip_string(v, error)
+        return self:tip_string(v)
     end
 
     -- Função | -- <<- Tratamento de ints ->> --
