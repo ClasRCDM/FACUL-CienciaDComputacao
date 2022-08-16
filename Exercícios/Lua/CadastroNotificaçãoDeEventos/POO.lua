@@ -31,24 +31,29 @@ do --:function_table
 
     function POO:tip(tips, tip) --:Table_string =>>
         local function isalpha(tipo) return type(string.match(tips.value, '%d+')) == tipo end
+        local function back() return self:tipif(tips) end
         -- ->> --------------- <<- --
         while true do -- Loop
             -- Trata erros | Strings --
             if isalpha(tip) then
-                tips = self:tipif(tips)
-            elseif tip == 'char' and #tips.value > 1 then
-                if tips.value ~= 'F' or tips.value ~= 'M' and isalpha(tip) then
-                    tips = self:tipif(tips)
-                else break end
+                tips = back()
+            elseif tip == 'char' then
+                if isalpha('string') or #tips.value == 1 then
+                    if tips.value ~= 'F' and tips.value == 'M' then
+                        break
+                    elseif tips.value ~= 'M' and tips.value == 'F' then
+                        break
+                    else tips = back() end
+                else tips = back() end
             -- Trata erros | Int --
             elseif tip == 'int' then
                 local r_isnumber = tonumber(tips.value) == nil
                 local r_thisnumber = type(string.match(tips.value, '%d+')) ~= 'string'
 
                 if not r_thisnumber and r_isnumber then
-                    tips = self:tipif(tips)
+                    tips = back()
                 elseif r_thisnumber then
-                    tips = self:tipif(tips)
+                    tips = back()
                 else break end
             else break end
         end
