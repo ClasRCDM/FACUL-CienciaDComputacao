@@ -8,34 +8,11 @@ do --:Class_table
         local itc = setmetatable({}, Usuario)
         -- ->> --------------- <<- --
         itc.nome = caract.nome or 'None' --:string
-        itc.idade = caract.idade or 'None' --:int
-        itc.genero = caract.genero or 'None'--:char
+        itc.tb_horas = caract.tb_horas or 'None' --:int
+        itc.Dependentes = caract.Dependentes or 'None'--:char
 
         return itc -- <<=
-    end
+    end -- <<-
 
-    function Usuario:update_vars(news) --:None
-        self.nome = news.nome or self.nome --:string
-        self.idade = news.idade-10 or self.idade --:int
-        self.genero = news.genero or self.genero--:char
-    end
-    -- <<-
-
-    -- Evento | main -- ->>
-    local Evento = {} Evento.__index = Evento -- Table:Class
-
-    function Evento.nv(desct) --:Class_table =>>
-        local itc = setmetatable({}, Evento)
-        -- ->> --------------- <<- --
-        itc.nome = desct.nome or 'None' --:string
-        itc.endereco = desct.endereco or 'None' --:string
-        itc.categoria = desct.categoria or 'None' --:char
-        itc.horario = desct.horario or 'None' --:int
-        itc.descricao = desct.descricao or 'None' --:string
-
-        return itc -- <<=
-    end
-    -- <<-
-
-    return Usuario, Evento --:Tables
+    return Usuario --:Tables
 end

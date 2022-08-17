@@ -3,7 +3,7 @@ do --:function_table
     -- POO | functions -- ->>
     local PROcc = {} PROcc.__index = PROcc -- Table:Class
 
-    -- Função | -- Trata o tipo ->>
+    -- Função | -- Cadastra informações ->>
     function PROcc:registrationUser(usuarios, cads, user, p) --:Table =>>
         local usuario = nil --:Table
         -- ->> --------------- <<- --
@@ -15,25 +15,25 @@ do --:function_table
                         msg = 'Nome: ',
                         msg_error = 'Porfavor escreva seu nome!!'
                     }),
-                    p:log('Idade: '); idade = p:trat_int({
+                    p:log('Horas trabalhadas: '); idade = p:trat_int({
                         value = io.read('*line'),
-                        msg = 'Idade: ',
-                        msg_error = 'Porfavor apenas números!'
+                        msg = 'Horas trabalhadas: ',
+                        msg_error = 'Não a necessidade de usar o H, use apenas números!'
                     }).value,
-                    p:log('Sexo: '); genero = p:trat_char({
+                    p:log('Dependentes: '); idade = p:trat_int({
                         value = io.read('*line'),
-                        msg = 'Sexo: ',
-                        msg_error = 'Use masculino ou Feminino -> [F/M]'
-                    })
+                        msg = 'Dependentes: ',
+                        msg_error = 'Porfavor apenas números!'
+                    }).value
                 })
 
-                print(usuario.idade)
                 table.insert(usuarios, usuario)
                 cads = 'N'
             else
-                p:printt('Você já contem um usuário salvo...')
+                print('') --:\n
+                p:printt('Você já contem um funcionário salvo...')
 
-                io.write('Gostaria de gadastrar um novo usuário? ')
+                io.write('Gostaria de gadastrar um novo? ')
                 cads = string.upper(p:no_space(io.read('*line')))
 
                 if cads == 'N' then break end
@@ -41,21 +41,13 @@ do --:function_table
         end
     end -- <<=
 
-    function PROcc:registrationEvent(eventos, cads, p) --:Table =>>
-        local evento = nil --:Table
+    -- Função | -- Trabalha as informações ->>
+    function PROcc:INFOuser(usuarios, cads, user, p) --:Table =>>
+        print('') --:\n
         -- ->> --------------- <<- --
-        while true do
-            if #eventos == 0 or cads == 'S' then
-                print(' - Cadastre um Evento...')
-            else
-                p:printt('Você já contem '.. #eventos .. ' eventos ' ..'cadastrados...')
-
-                io.write('Gostaria de gadastrar mais um evento? ')
-                cads = string.upper(p:no_space(io.read('*line')))
-
-                if cads == 'N' then break end
-            end
-        end
+        print('Nome: None')
+        print('Salário bruto: 0')
+        print('Salário líquido: 0')
     end
 
     return PROcc
