@@ -28,16 +28,20 @@ do --:function_table
         return tips -- <<=
     end -- ->
 
-    local function isalpha(tipo, value) return type(string.match(value, '%d+')) == tipo end
-    local function back(t) return POO:tipif(t) end
+    local function isalpha(tipo, value) return type(string.match(value, '%d+')) == tipo end --:Boolean
+    local function back(t) return POO:tipif(t) end --:Table
+    local function back_back(ts) --:Table_tips
+        print(ts.msg_error)
+        POO:log(ts.msg)
+        return back(ts)
+    end
 
     function POO:tip_string(ts) --:Table_string =>>
         -- ->> --------------- <<- --
         while true do -- Loop
             -- Trata erros | Strings --
             if isalpha('string', ts.value) or ts.value == '' then
-                print(ts.msg_error)
-                self:log(ts.msg) ts = self:trat_string(back(ts))
+                ts = back_back(ts)
             else break end
         end
         return ts -- <<=
@@ -51,8 +55,8 @@ do --:function_table
                     break
                 elseif ts.value ~= 'M' and ts.value == 'F' then
                     break
-                else ts = back(ts) end
-            else ts = back(ts) end
+                else ts = back_back(ts) end
+            else ts = back_back(ts) end
         end
         return ts -- <<=
     end -- ->
@@ -65,9 +69,9 @@ do --:function_table
             local r_thisnumber = type(string.match(ts.value, '%d+')) ~= 'string'
 
             if not r_thisnumber and r_isnumber then
-                ts = back(ts)
+                ts = back_back(ts)
             elseif r_thisnumber then
-                ts = back(ts)
+                ts = back_back(ts)
             else break end
         end
         return ts -- <<=
@@ -87,7 +91,7 @@ do --:function_table
 
     -- Função | -- <<- Tratamento de chars ->> --
     function POO:trat_char(v) --:Table_char
-        v.value = self:no_space(v.value)
+        v.value = string.upper(self:no_space(v.value))
         return self:tip_char(v)
     end
 

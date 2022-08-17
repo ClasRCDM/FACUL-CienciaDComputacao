@@ -27,7 +27,6 @@ do --:function_table
                     })
                 })
 
-                print(usuario.idade)
                 table.insert(usuarios, usuario)
                 cads = 'N'
             else
