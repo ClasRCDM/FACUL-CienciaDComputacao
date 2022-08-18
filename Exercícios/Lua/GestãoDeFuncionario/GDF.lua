@@ -26,6 +26,7 @@ do -- Main program --
     function CTDe:runEvents() --:None
         self:userRegistration()
         self:userINFO()
+        self:end_progm()
     end
 
     -- Cadastra o Usuário --
@@ -38,11 +39,21 @@ do -- Main program --
 
     -- Cadastra o Usuário --
     function CTDe:userINFO() --:Set_usuário
-        print(' - Informações...')
+        print('\n ->>- Informações...')
         -- ->> --------------- <<- --
-        prs:INFOuser()
+        prs:INFOuser(self.usuarios, p)
     end
     -- <<-
+
+    -- FIM
+    function CTDe:end_progm() --:None
+        p:printt('\n ->> - ENCERRAR... - <<-')
+        -- ->> --------------- <<- --
+        io.write('Gostaria de continuar o programa? ')
+        self.cads = string.upper(p:no_space(io.read('*line')))
+
+        if self.cads == 'S' then self:runEvents() end
+    end -- <<-
 
     -- Classe | Chamada -- ->> <<-
     local CadastroDeEventos = CTDe.novo()

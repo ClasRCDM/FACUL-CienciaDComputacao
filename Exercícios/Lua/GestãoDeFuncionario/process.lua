@@ -14,13 +14,13 @@ do --:function_table
                         value = io.read('*line'),
                         msg = 'Nome: ',
                         msg_error = 'Porfavor escreva seu nome!!'
-                    }),
-                    p:log('Horas trabalhadas: '); idade = p:trat_int({
+                    }).value,
+                    p:log('Horas trabalhadas: '); tb_horas = p:trat_int({
                         value = io.read('*line'),
                         msg = 'Horas trabalhadas: ',
                         msg_error = 'Não a necessidade de usar o H, use apenas números!'
                     }).value,
-                    p:log('Dependentes: '); idade = p:trat_int({
+                    p:log('Dependentes: '); dependentes = p:trat_int({
                         value = io.read('*line'),
                         msg = 'Dependentes: ',
                         msg_error = 'Porfavor apenas números!'
@@ -42,12 +42,19 @@ do --:function_table
     end -- <<=
 
     -- Função | -- Trabalha as informações ->>
-    function PROcc:INFOuser(usuarios, cads, user, p) --:Table =>>
-        print('') --:\n
+    function PROcc:INFOuser(users, p) --:Table =>>
+        local salario = --:Table_float
+        {
+            bruto = nil,
+            liquido = nil
+        }
+
+        salario.bruto = (users[1].tb_horas * 10) + (users[1].dependentes * 60)
+        salario.liquido = salario.bruto - p:desc(5 + 8.5, salario.bruto)
         -- ->> --------------- <<- --
-        print('Nome: None')
-        print('Salário bruto: 0')
-        print('Salário líquido: 0')
+        print('Nome: ' .. users[1].nome)
+        print('Salário bruto: $' .. salario.bruto+.0)
+        print('Salário líquido: $' .. salario.liquido)
     end
 
     return PROcc

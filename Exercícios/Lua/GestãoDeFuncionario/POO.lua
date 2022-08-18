@@ -16,6 +16,9 @@ do --:function_table
     -- Função | -- <<- io.write ->> --
     function POO:log(...) io.write(...) end --:string
 
+    -- Função | -- <<- Desconto ->> --
+    function POO:desc(d, s) return (d) * s / 100 end --:string
+
     -- Função | -- Trata o tipo ->>
     function POO:tipif(tips) --:Table =>>
         -- ->> --------------- <<- --

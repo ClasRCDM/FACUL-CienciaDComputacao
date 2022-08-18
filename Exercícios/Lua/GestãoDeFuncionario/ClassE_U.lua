@@ -8,8 +8,8 @@ do --:Class_table
         local itc = setmetatable({}, Usuario)
         -- ->> --------------- <<- --
         itc.nome = caract.nome or 'None' --:string
-        itc.tb_horas = caract.tb_horas or 'None' --:int
-        itc.Dependentes = caract.Dependentes or 'None'--:char
+        itc.tb_horas = caract.tb_horas or 0 --:float
+        itc.dependentes = caract.dependentes or 0 --:int
 
         return itc -- <<=
     end -- <<-
