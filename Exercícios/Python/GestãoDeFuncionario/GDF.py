@@ -9,21 +9,33 @@
 class GDF(object):
     """docstring for GDF."""
 
-    def __init__(self, arg):
+    def __init__(self):
         super(GDF, self).__init__()
-        self.arg = arg
+        # -- ->> --------------- <<- -- #
+        print('\t->> __Porfavor registre seus dados!!__ <<-\n')
+        self.usuários: list  = []
 
     def run_Events(self):
-        pass
+        self.user_Registration()
+        self.user_INFO()
+        self.end_program()
+
+    def user_Registration(self):
+        print(' - Cadastre um Funcionário...')
+        # -- ->> --------------- <<- -- #
 
     def user_INFO(self):
-        pass
+        print('\t\n ->>- Informações...')
+        # -- ->> --------------- <<- -- #
 
     def end_program(self):
-        pass
+        print('\t\n ->> - ENCERRAR... - <<-')
+        # -- ->> --------------- <<- -- #
+        if str(input('Gostaria de continuar o programa? ')) == 'S':
+            self.run_Events()
 
 
 # -- Classe | Chamada -- ->> <<-
-if __main__ == '__main__':
+if __name__ == '__main__':
     CadastroDeFuncionario = GDF()
     CadastroDeFuncionario.run_Events()
