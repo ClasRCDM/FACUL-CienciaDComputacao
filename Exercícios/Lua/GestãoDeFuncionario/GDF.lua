@@ -56,6 +56,6 @@ do -- Main program --
     end -- <<-
 
     -- Classe | Chamada -- ->> <<-
-    local CadastroDeEventos = GDF.novo()
-    CadastroDeEventos:runEvents()
+    local CadastroDeFuncionario = GDF.novo()
+    CadastroDeFuncionario:runEvents()
 end
