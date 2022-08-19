@@ -39,7 +39,7 @@ do -- Main program --
 
     -- Cadastra o Usuário --
     function CTDe:userINFO() --:Set_usuário
-        print('\n ->>- Informações...')
+        p:printt('\n ->>- Informações...')
         -- ->> --------------- <<- --
         prs:INFOuser(self.usuarios, p)
     end

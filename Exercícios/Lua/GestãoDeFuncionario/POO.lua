@@ -4,9 +4,6 @@ do --:function_table
     -- POO | functions -- ->>
     local POO = {} POO.__index = POO -- Table:Class
 
-    -- Função | -- <<- Format ->> --
-    function POO:printf(...) print(string.format(...)) end --:None
-
     -- Função | -- <<- \t ->> --
     function POO:printt(...) print('\t' .. ...) end --:None
 

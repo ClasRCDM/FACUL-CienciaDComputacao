@@ -30,8 +30,7 @@ do --:function_table
                 table.insert(usuarios, usuario)
                 cads = 'N'
             else
-                print('') --:\n
-                p:printt('Você já contem um funcionário salvo...')
+                p:printt('\n - Você já contem um funcionário salvo...')
 
                 io.write('Gostaria de gadastrar um novo? ')
                 cads = string.upper(p:no_space(io.read('*line')))
@@ -45,14 +44,47 @@ do --:function_table
     function PROcc:INFOuser(users, p) --:Table =>>
         local salario = --:Table_float
         {
-            bruto = nil,
-            liquido = nil
+            bruto = nil, --:float | int
+            liquido = nil --:float | int
         }
+        local func = 1 --:_
+        -- ->> --------------- <<- --
+        if #users > 1 then
+            print([[
+Você tem mais de um funcionário cadastro.
+Caso queira o ultimo funcionário cadastro apenas aperte espaço,
+ou o nome do mesmo para o ulitmo ou primeiro funcionário cadastrado,
+também serve o index 1, 2, 3 e etc...]])
 
-        salario.bruto = (users[1].tb_horas * 10) + (users[1].dependentes * 60)
+            while true do --:Loop
+                ::loop:: --:Back to loop
+                -- First
+                p:log('\nQual funcionário? ')
+                func = p:no_space(io.read('*line'))
+                if func == '' or func == ' ' or func == nil then
+                    func = 1
+                    break
+                end
+
+                -- Index
+                local r_isnumber = tonumber(func) == nil
+                local r_thisnumber = type(string.match(func, '%d+')) ~= 'string'
+
+                if not r_thisnumber and r_isnumber then
+                    goto loop
+                elseif r_thisnumber then
+                    goto loop
+                else
+                    func = tonumber(func)
+                    if func > #users then goto loop end
+                    break
+                end
+            end
+        end
+        salario.bruto = (users[func].tb_horas * 10) + (users[func].dependentes * 60)
         salario.liquido = salario.bruto - p:desc(5 + 8.5, salario.bruto)
         -- ->> --------------- <<- --
-        print('Nome: ' .. users[1].nome)
+        print('Nome: ' .. users[func].nome)
         print('Salário bruto: $' .. salario.bruto+.0)
         print('Salário líquido: $' .. salario.liquido)
     end
