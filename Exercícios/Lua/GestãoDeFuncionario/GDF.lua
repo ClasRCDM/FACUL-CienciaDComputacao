@@ -9,10 +9,10 @@ do -- Main program --
     local p = require "POO"
 
     -- Classe | main -- ->>
-    local CTDe = {} CTDe.__index = CTDe -- Table:Class
+    local GDF = {} GDF.__index = GDF -- Table:Class
 
-    function CTDe.novo() --:Class_table
-        local instancia = setmetatable({}, CTDe)
+    function GDF.novo() --:Class_table
+        local instancia = setmetatable({}, GDF)
         -- ->> --------------- <<- --
         p:printt('->> __Porfavor registre seus dados!!__ <<-' .. '\n')
 
@@ -56,6 +56,6 @@ do -- Main program --
     end -- <<-
 
     -- Classe | Chamada -- ->> <<-
-    local CadastroDeEventos = CTDe.novo()
+    local CadastroDeEventos = GDF.novo()
     CadastroDeEventos:runEvents()
 end
