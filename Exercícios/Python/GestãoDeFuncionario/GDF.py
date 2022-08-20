@@ -1,7 +1,7 @@
 # -- Cadastro de informações do Usuario --#
 
 # Main Imports...
-from ClassUser import Usuário as user
+import process as pr
 
 # POO Imports...
 
@@ -9,11 +9,12 @@ from ClassUser import Usuário as user
 # -- Classe | main -- ->>
 class GDF(object):
     """docstring for GDF."""
-    __slots__ = 'usuários'
+    __slots__ = 'usuários', 'cads'
 
     def __init__(self):
         print('\t->> __Porfavor registre seus dados!!__ <<-\n')
         # -- ->> --------------- <<- -- #
+        self.cads: str = None
         self.usuários: list  = []
 
     def run_Events(self):
@@ -22,16 +23,12 @@ class GDF(object):
         self.end_program()
 
     def user_Registration(self):
-        print(' - Cadastre um Funcionário...')
         # -- ->> --------------- <<- -- #
+        pr.registrationUser(self.usuários, self.cads)
 
     def user_INFO(self):
         print('\t\n ->>- Informações...')
         # -- ->> --------------- <<- -- #
-        func = user({'nome': 'Raphael',
-                     'tb_horas': 135,
-                     'dependentes': 3})
-        func.print()
 
     def end_program(self):
         print('\t\n ->> - ENCERRAR... - <<-')
