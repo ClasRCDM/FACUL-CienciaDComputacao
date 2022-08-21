@@ -29,6 +29,7 @@ class GDF(object):
     def user_INFO(self):
         print('\t\n ->>- Informações...')
         # -- ->> --------------- <<- -- #
+        pr.userINFO(self.usuários)
 
     def end_program(self):
         print('\t\n ->> - ENCERRAR... - <<-')
