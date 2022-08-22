@@ -41,12 +41,15 @@ também serve o index 1, 2, 3 e etc...""")
         while 1:
             # -- First
             func = input('\nQual funcionário? ')
-            if func == '' or func == ' ':
-                func = 0
+            if func == '' or func == ' ': break
+            elif func.isnumeric():  #-- Index
+                func = int(func)
                 break
-
-            # -- Index
-
+            elif func.isalpha():
+                for index, user in enumerate(users):
+                    if user.nome == func:
+                        func = index
+                break
             # -- Name
 
     salario['bruto'] = (users[func].tb_horas * 10) + (users[func].dependentes * 60)

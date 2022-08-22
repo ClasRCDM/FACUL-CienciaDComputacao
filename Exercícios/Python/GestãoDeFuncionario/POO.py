@@ -19,6 +19,6 @@ def string(s, ms_error):
 
 # -- Função | -- <<- Tratamento de int | float ->> --
 def inteiro(i, ms_error):
-    return tratamento(s, ms_error,
+    return tratamento(i, ms_error,
     {'tipo': lambda v : int(v),
      'teste':  lambda v : v.isnumeric()})
