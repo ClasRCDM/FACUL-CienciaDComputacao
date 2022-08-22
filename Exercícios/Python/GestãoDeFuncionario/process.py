@@ -6,13 +6,15 @@ def registrationUser(usuários, cads):
     while 1:
         if len(usuários) == 0 or cads in ['S', 's']:
             print('\n - Cadastre um Funcionário...')
-
+            # -- ->> --__________-- <<- -- #
             usuário: dict = user({
-            'nome': str(input('Nome: ')),
-            'tb_horas': float(input('Horas trabalhadas: ')),
-            'dependentes': int(input('Seus dependentes: '))
-            })
-
+            'nome': string('Nome: ',
+                           'Porfavor escreva seu nome sem números!!'),
+            'tb_horas': inteiro('Horas trabalhadas: ',
+                                'Porfavor apenas números!'),
+            'dependentes': inteiro('Seus dependentes: ',
+                                   'Porfavor apenas números!!')})
+            # -- ->> --___-- <<- -- #
             usuários.append(usuário)
             break
         else:
@@ -52,4 +54,4 @@ também serve o index 1, 2, 3 e etc...""")
     # -- ->> --------------- <<- -- #
     print(f'Nome: {users[func].nome}')
     print(f'Salário bruto: ${salario["bruto"]:.2f}')
-    print(f'Salário líquido: ${salario["liquido"]}')
+    print(f'Salário líquido: ${salario["liquido"]:.2f}')
