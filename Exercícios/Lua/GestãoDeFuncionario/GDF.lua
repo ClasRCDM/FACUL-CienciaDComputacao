@@ -14,7 +14,7 @@ do -- Main program --
     function GDF.novo() --:Class_table
         local instancia = setmetatable({}, GDF)
         -- ->> --------------- <<- --
-        p:printt('->> __Porfavor registre seus dados!!__ <<-' .. '\n')
+        p:printt('->> __Porfavor registre seus dados!!__ <<-')
 
         instancia.usuarios = {} --:Table
         instancia.cads = nil --:char
@@ -23,22 +23,22 @@ do -- Main program --
     end
 
     -- Inicia o Casdastro de Eventos --
-    function CTDe:runEvents() --:None
+    function GDF:runEvents() --:None
         self:userRegistration()
         self:userINFO()
         self:end_progm()
     end
 
     -- Cadastra o Usuário --
-    function CTDe:userRegistration() --:Set_usuário
-        print(' - Cadastre um Funcionário...')
+    function GDF:userRegistration() --:Set_usuário
+        print('\n - Cadastre um Funcionário...')
         -- ->> --------------- <<- --
         prs:registrationUser(self.usuarios, self.cads, user, p)
     end
     -- <<-
 
     -- Cadastra o Usuário --
-    function CTDe:userINFO() --:Set_usuário
+    function GDF:userINFO() --:Set_usuário
         p:printt('\n ->>- Informações...')
         -- ->> --------------- <<- --
         prs:INFOuser(self.usuarios, p)
@@ -46,7 +46,7 @@ do -- Main program --
     -- <<-
 
     -- FIM
-    function CTDe:end_progm() --:None
+    function GDF:end_progm() --:None
         p:printt('\n ->> - ENCERRAR... - <<-')
         -- ->> --------------- <<- --
         io.write('Gostaria de continuar o programa? ')

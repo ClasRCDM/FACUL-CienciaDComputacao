@@ -29,6 +29,7 @@ do --:function_table
 
                 table.insert(usuarios, usuario)
                 cads = 'N'
+                break
             else
                 p:printt('\n - Você já contem um funcionário salvo...')
 
