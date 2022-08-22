@@ -36,6 +36,7 @@ class GDF(object):
         # -- ->> --------------- <<- -- #
         if str(input('Gostaria de continuar o programa? ')) in ['S', 's']:
             self.run_Events()
+# -- <<-
 
 
 # -- Classe | Chamada -- ->> <<-

@@ -9,3 +9,4 @@ class Usuário(object):
 
     def print(self):
         print(f'{self.nome}\n{self.tb_horas}\n{self.dependentes}\n')
+# -- <<-
