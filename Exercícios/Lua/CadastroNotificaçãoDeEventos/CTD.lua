@@ -46,9 +46,12 @@ do -- Main program --
 
     -- Fim --
     function CTDe:endprogram() --:
-        -- ->> --------------- <<- --
+        -- ->> Salva dados <<- --
     	local arquivo = io.open('events.data.txt', 'w')
-        arquivo:write(prs:saveUser(self.usuarios)) arquivo:close()
+        -- ->> Salva usuários <<- --
+        arquivo:write(prs:saveUser(self.usuarios, p)) arquivo:close()
+        -- ->> Salva eventos <<- --
+        -- arquivo:write(prs:saveEvent(self.eventos)) arquivo:close()
         print('FIm')
     end
 

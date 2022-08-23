@@ -128,6 +128,29 @@ do --:function_table
         return self:tip_char(v)
     end
 
+    -- Função | -- Titulo ->>
+    function POO:to_title(title) --:Table_string_text =>> <<=
+        return title .. '\n\n' end -- <<-
+
+    -- Função | -- Escrita base ->>
+    function POO:to_base(text) --:Table_string_text =>>
+        local result = ''
+        result = result .. 'Index: ' .. (text.index or '') .. '\n'
+        result = result .. text.items
+        result = result .. '-=-=-=-=-=-=-=-=-=-=' .. '\n'
+        return result -- <<=
+    end -- <<-
+
+    -- Função | -- Itens  ->>
+    function POO:to_item(add) --:Table_string_text =>>
+        local result = ''
+        -- ->> --------------- <<- --
+        for index=1, #add.item do
+            result = result .. '\t' .. add.name[index] .. (add.item[index] or '')  .. '\n'
+        end
+        return result -- <<=
+    end -- <<-
+
     --
     return POO -- <<-
 end

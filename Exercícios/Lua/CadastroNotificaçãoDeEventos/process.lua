@@ -87,17 +87,27 @@ do --:function_table
     end -- <<=
 
     -- Função | -- Salva usuário ->>
-    function PROcc:saveUser(users) --:Table_string_text
-        local result = ''
-        result = result .. ' - Usuários -- ->> ' .. '\n\n'
+    function PROcc:saveUser(users, p) --:Table_string_text =>>
+        local result = p:to_title(' - Usuários -- ->> ')
+        -- ->> --------------- <<- --
         for user=1, #users do
-            result = result .. 'Index: ' .. (user or '') .. '\n'
-            result = result .. '\tNome: ' .. (users[user].nome or '') .. '\n'
-            result = result .. '\tIdade: ' .. (users[user].idade or '') .. '\n'
-            result = result .. '\tSexo: ' .. (users[user].genero or '') .. '\n'
-            result = result .. '-=-=-=-=-=-=-=-=-=-=' .. '\n'
-        end return result
-    end
+            result = result .. p:to_base({
+                index = user,
+                items = p:to_item({
+                    name = {
+                        'Nome: ',
+                        'Idade: ',
+                        'Sexo: '
+                    },
+                    item = {
+                        users[user].nome,
+                        users[user].idade,
+                        users[user].genero
+                    }
+                })
+            })
+        end return result -- <<=
+    end -- <<-
 
     return PROcc -- <<- <<=:
 end
