@@ -33,7 +33,6 @@ do -- Main program --
 
     -- Cadastra o Usuário --
     function CTDe:userRegistration() --:Set_usuário
-        print(' - Cadastre um Usuário...')
         -- ->> --------------- <<- --
         prs:registrationUser(self.usuarios, self.cads, clss.usuario, p)
     end
@@ -41,25 +40,15 @@ do -- Main program --
     -- Cadastra o Evento --
     function CTDe:eventRegistration() --:Set_eventos
         -- ->> --------------- <<- --
-        print('\n - Cadastre um Evento...')
         --prs:registrationEvent(self.eventos, self.cads, clss.evento, p)
     end
     -- <<-
 
     -- Fim --
     function CTDe:endprogram() --:
-        local function toString(res)
-    		local result = ''
-            result = result .. ' - Usuários -- ->> ' .. '\n'
-    		result = result .. '\tNome: ' .. (res.nome or '') .. '\n'
-    		result = result .. '\tIdade: ' .. (res.idade or '') .. '\n'
-    		result = result .. '\tSexo: ' .. (res.genero or '') .. '\n'
-    		result = result .. '\n'
-    		return result
-    	end
-
+        -- ->> --------------- <<- --
     	local arquivo = io.open('events.data.txt', 'w')
-        arquivo:write(toString(self.usuarios[1])) arquivo:close()
+        arquivo:write(prs:saveUser(self.usuarios)) arquivo:close()
         print('FIm')
     end
 

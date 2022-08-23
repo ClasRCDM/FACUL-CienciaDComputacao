@@ -9,6 +9,8 @@ do --:function_table
         -- ->> --------------- <<- --
         while true do
             if #usuarios == 0 or cads == 'S' then
+                print('\n - Cadastre um Usuário...')
+                -- ->> --------------- <<- --
                 usuario = user.nv({
                     p:log('Nome: '); nome = p:trat_string({
                         msg = 'Nome: ',
@@ -28,7 +30,6 @@ do --:function_table
                 })
 
                 table.insert(usuarios, usuario) cads = 'N'
-                break
             else
                 p:printt('Você já contem um usuário salvo...')
 
@@ -46,6 +47,8 @@ do --:function_table
         -- ->> --------------- <<- --
         while true do
             if #eventos == 0 or cads == 'S' then
+                print('\n - Cadastre um Evento...')
+                -- ->> --------------- <<- --
                 evento = event.nv({
                     p:log('Nome: '); nome = p:trat_string({
                         msg = 'Nome: ',
@@ -84,8 +87,16 @@ do --:function_table
     end -- <<=
 
     -- Função | -- Salva usuário ->>
-    function PROcc:saveUser() --:Table_string_text
-        -- pass
+    function PROcc:saveUser(users) --:Table_string_text
+        local result = ''
+        result = result .. ' - Usuários -- ->> ' .. '\n\n'
+        for user=1, #users do
+            result = result .. 'Index: ' .. (user or '') .. '\n'
+            result = result .. '\tNome: ' .. (users[user].nome or '') .. '\n'
+            result = result .. '\tIdade: ' .. (users[user].idade or '') .. '\n'
+            result = result .. '\tSexo: ' .. (users[user].genero or '') .. '\n'
+            result = result .. '-=-=-=-=-=-=-=-=-=-=' .. '\n'
+        end return result
     end
 
     return PROcc -- <<- <<=:
