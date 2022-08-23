@@ -3,8 +3,6 @@
 # Main Imports...
 import process as pr
 
-# POO Imports...
-
 
 # -- Classe | main -- ->>
 class GDF(object):

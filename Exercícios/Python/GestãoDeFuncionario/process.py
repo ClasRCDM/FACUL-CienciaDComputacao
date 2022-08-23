@@ -1,6 +1,7 @@
 from ClassUser import Usuário as user
 from POO import *
 
+
 # -- Função | -- Cadastra informações ->>
 def registrationUser(usuários, cads):
     while 1:
@@ -26,6 +27,7 @@ def registrationUser(usuários, cads):
             if cads in ['N', 'n']:
                 break
 # -- <<-
+
 
 # -- Função | -- Trabalha as informações ->>
 def userINFO(users):
