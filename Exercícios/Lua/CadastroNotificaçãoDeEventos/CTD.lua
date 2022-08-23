@@ -46,13 +46,19 @@ do -- Main program --
 
     -- Fim --
     function CTDe:endprogram() --:
+        p:printt('\n ->> - ENCERRAR... - <<-')
+        -- ->> --------------- <<- --
+        io.write('Gostaria de encerrar o programa? ')
+        self.cads = string.upper(p:no_space(io.read('*line')))
+
+        if self.cads == 'N' then self:runEvents() end
+
         -- ->> Salva dados <<- --
     	local arquivo = io.open('events.data.txt', 'w')
         -- ->> Salva usuários <<- --
         arquivo:write(prs:saveUser(self.usuarios, p))
         -- ->> Salva eventos <<- --
         arquivo:write(prs:saveEvent(self.eventos, p)) arquivo:close()
-        print('FIm')
     end
 
     -- Classe | Chamada -- ->> <<-

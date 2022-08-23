@@ -29,12 +29,13 @@ do --:function_table
                     }).value
                 })
 
-                table.insert(usuarios, usuario) cads = 'N'
+                table.insert(usuarios, usuario)
+                cads = 'N'
                 break
             else
                 p:printt('Você já contem um usuário salvo...')
 
-                io.write('Gostaria de gadastrar um novo usuário? ')
+                io.write('\nGostaria de gadastrar um novo usuário? ')
                 cads = string.upper(p:no_space(io.read('*line')))
 
                 if cads == 'N' then break end
@@ -74,12 +75,13 @@ do --:function_table
                     p:log('Descrição: '); descricao = io.read('*line'),
                 })
 
-                table.insert(eventos, evento) cads = 'N'
+                table.insert(eventos, evento)
+                cads = 'N'
                 break
             else
                 p:printt('Você já contem '.. #eventos .. ' eventos ' ..'cadastrados...')
 
-                io.write('Gostaria de gadastrar mais um evento? ')
+                io.write('\nGostaria de gadastrar mais um evento? ')
                 cads = string.upper(p:no_space(io.read('*line')))
 
                 if cads == 'N' then break end
@@ -122,8 +124,8 @@ do --:function_table
                         'Nome do evento: ',
                         'Endereço : ',
                         'Categoria : ',
-                        'Horario :',
-                        'Descrição :'
+                        'Horario : ',
+                        'Descrição : '
                     },
                     item = {
                         events[event].nome,
