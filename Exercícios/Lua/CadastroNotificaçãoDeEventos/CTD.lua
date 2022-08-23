@@ -28,6 +28,7 @@ do -- Main program --
     function CTDe:runEvents() --:None
         self:userRegistration()
         self:eventRegistration()
+        self:endprogram()
     end
 
     -- Cadastra o Usuário --
@@ -41,26 +42,25 @@ do -- Main program --
     function CTDe:eventRegistration() --:Set_eventos
         -- ->> --------------- <<- --
         print('\n - Cadastre um Evento...')
-        prs:registrationEvent(self.eventos, self.cads, clss.evento, p)
+        --prs:registrationEvent(self.eventos, self.cads, clss.evento, p)
     end
     -- <<-
 
     -- Fim --
     function CTDe:endprogram() --:
-        function toString(res)
+        local function toString(res)
     		local result = ''
-    		for i, moeda in ipairs(res) do
-    			result = result .. 'Nome: ' .. (moeda.nome or '') .. '\n'
-    			result = result .. 'Idade: ' .. (moeda.idade or '') .. '\n'
-    			result = result .. 'Sexo: ' .. (moeda.sexo or '') .. '\n'
-    			result = result .. '\n'
-    		end
+            result = result .. ' - Usuários -- ->> ' .. '\n'
+    		result = result .. '\tNome: ' .. (res.nome or '') .. '\n'
+    		result = result .. '\tIdade: ' .. (res.idade or '') .. '\n'
+    		result = result .. '\tSexo: ' .. (res.genero or '') .. '\n'
+    		result = result .. '\n'
     		return result
     	end
 
-        local nomeArqResultado = string.gsub('Tabela_de_Moedas', '%.%w+$', '.txt')
-    	local arqResultado = io.open(nomeArqResultado, 'w')
-        arqResultado:write(toString(resultado))
+    	local arquivo = io.open('events.data.txt', 'w')
+        arquivo:write(toString(self.usuarios[1])) arquivo:close()
+        print('FIm')
     end
 
     -- Classe | Chamada -- ->> <<-

@@ -3,7 +3,7 @@ do --:function_table
     -- POO | functions -- ->>
     local PROcc = {} PROcc.__index = PROcc -- Table:Class
 
-    -- Função | -- Trata o tipo ->>
+    -- Função | -- Cadastra usuário ->>
     function PROcc:registrationUser(usuarios, cads, user, p) --:Table =>>
         local usuario = nil --:Table
         -- ->> --------------- <<- --
@@ -14,7 +14,7 @@ do --:function_table
                         msg = 'Nome: ',
                         value = io.read('*line'),
                         msg_error = 'Porfavor escreva seu nome!!'
-                    }),
+                    }).value,
                     p:log('Idade: '); idade = p:trat_int({
                         msg = 'Idade: ',
                         value = io.read('*line'),
@@ -24,7 +24,7 @@ do --:function_table
                         msg = 'Sexo: ',
                         value = string.upper(io.read('*line')),
                         msg_error = 'Use masculino ou Feminino -> [M/F]'
-                    })
+                    }).value
                 })
 
                 table.insert(usuarios, usuario) cads = 'N'
@@ -37,9 +37,10 @@ do --:function_table
 
                 if cads == 'N' then break end
             end
-        end
+        end -- <<-
     end -- <<=
 
+    -- Função | -- Cadastra evento ->>
     function PROcc:registrationEvent(eventos, cads, event, p) --:Table =>>
         local evento = nil --:Table
         -- ->> --------------- <<- --
@@ -79,8 +80,13 @@ do --:function_table
 
                 if cads == 'N' then break end
             end
-        end
+        end -- <<-
+    end -- <<=
+
+    -- Função | -- Salva usuário ->>
+    function PROcc:saveUser() --:Table_string_text
+        -- pass
     end
 
-    return PROcc
+    return PROcc -- <<- <<=:
 end
