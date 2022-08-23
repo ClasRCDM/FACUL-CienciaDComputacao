@@ -30,6 +30,7 @@ do --:function_table
                 })
 
                 table.insert(usuarios, usuario) cads = 'N'
+                break
             else
                 p:printt('Você já contem um usuário salvo...')
 
@@ -54,7 +55,7 @@ do --:function_table
                         msg = 'Nome: ',
                         value = io.read('*line'),
                         msg_error = 'Porfavor escreva o nome do evento e sem números!!'
-                    }),
+                    }).value,
                     p:log('Endereço: '); endereco = p:tip_string_desc({
                         msg = 'Endereço: ',
                         value = p:no_space(io.read('*line')),
@@ -64,12 +65,12 @@ do --:function_table
                         msg = 'categoria: ',
                         value = p:no_space(io.read('*line')),
                         msg_error = 'Use apenas -> [[F/E/S/I]]'
-                    }),
+                    }).value,
                     p:log('Horario: '); horario = p:trat_int({
                         msg = 'Horario: ',
                         value = io.read('*line'),
                         msg_error = 'Use apenas números'
-                    }),
+                    }).value,
                     p:log('Descrição: '); descricao = io.read('*line'),
                 })
 
@@ -103,6 +104,33 @@ do --:function_table
                         users[user].nome,
                         users[user].idade,
                         users[user].genero
+                    }
+                })
+            })
+        end return result -- <<=
+    end -- <<-
+
+    -- Função | -- Salva usuário ->>
+    function PROcc:saveEvent(events, p) --:Table_string_text =>>
+        local result = p:to_title('\n - Eventos -- ->> ')
+        -- ->> --------------- <<- --
+        for event=1, #events do
+            result = result .. p:to_base({
+                index = event,
+                items = p:to_item({
+                    name = {
+                        'Nome do evento: ',
+                        'Endereço : ',
+                        'Categoria : ',
+                        'Horario :',
+                        'Descrição :'
+                    },
+                    item = {
+                        events[event].nome,
+                        events[event].endereco,
+                        events[event].categoria,
+                        events[event].horario,
+                        events[event].descricao
                     }
                 })
             })

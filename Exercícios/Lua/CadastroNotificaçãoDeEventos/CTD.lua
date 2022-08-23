@@ -40,7 +40,7 @@ do -- Main program --
     -- Cadastra o Evento --
     function CTDe:eventRegistration() --:Set_eventos
         -- ->> --------------- <<- --
-        --prs:registrationEvent(self.eventos, self.cads, clss.evento, p)
+        prs:registrationEvent(self.eventos, self.cads, clss.evento, p)
     end
     -- <<-
 
@@ -49,9 +49,9 @@ do -- Main program --
         -- ->> Salva dados <<- --
     	local arquivo = io.open('events.data.txt', 'w')
         -- ->> Salva usuários <<- --
-        arquivo:write(prs:saveUser(self.usuarios, p)) arquivo:close()
+        arquivo:write(prs:saveUser(self.usuarios, p))
         -- ->> Salva eventos <<- --
-        -- arquivo:write(prs:saveEvent(self.eventos)) arquivo:close()
+        arquivo:write(prs:saveEvent(self.eventos, p)) arquivo:close()
         print('FIm')
     end
 
