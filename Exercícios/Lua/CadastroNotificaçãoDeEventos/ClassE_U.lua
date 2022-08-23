@@ -1,6 +1,5 @@
 -- Cadastros Gerais --
 do --:Class_table
-
     -- Usuário | main -- ->>
     local Usuario = {} Usuario.__index = Usuario -- Table:Class
 
@@ -16,7 +15,7 @@ do --:Class_table
 
     function Usuario:update_vars(news) --:None
         self.nome = news.nome or self.nome --:string
-        self.idade = news.idade-10 or self.idade --:int
+        self.idade = news.idade or self.idade --:int
         self.genero = news.genero or self.genero--:char
     end
     -- <<-
@@ -37,5 +36,10 @@ do --:Class_table
     end
     -- <<-
 
-    return Usuario, Evento --:Tables
+    -- Class | mains -- ->>
+    local Clss = {
+        evento = Evento,
+        usuario = Usuario
+    } -- Table:Class
+    return Clss --:Tables
 end

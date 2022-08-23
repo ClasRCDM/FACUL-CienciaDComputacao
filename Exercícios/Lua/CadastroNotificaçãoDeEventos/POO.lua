@@ -28,7 +28,11 @@ do --:function_table
         return tips -- <<=
     end -- ->
 
-    local function isalpha(tipo, value) return type(string.match(value, '%d+')) == tipo end --:Boolean
+    local function isalphaiqual(tipo, value) return type(string.match(value, '%d+')) == tipo end --:Boolean
+    local function isalphadif(tipo, value) return type(string.match(value, '%d+')) ~= tipo end --:Boolean
+
+    local function isnotnumber(valor) return tonumber(valor) == nil end --:Boolean
+
     local function back(t) return POO:tipif(t) end --:Table
     local function back_back(ts) --:Table_tips
         print(ts.msg_error)
@@ -36,11 +40,24 @@ do --:function_table
         return back(ts)
     end
 
+    function POO:tip_string_desc(ts) --:Table_string =>>
+        -- ->> --------------- <<- --
+        while true do -- Loop
+            -- Trata erros | Strings --
+            if isalphadif('string', ts.value) and isnotnumber(ts.value) or ts.value == '' then
+                ts = back_back(ts)
+            elseif not isnotnumber(ts.value) then
+                ts = back_back(ts)
+            else break end
+        end
+        return ts -- <<=
+    end -- ->
+
     function POO:tip_string(ts) --:Table_string =>>
         -- ->> --------------- <<- --
         while true do -- Loop
             -- Trata erros | Strings --
-            if isalpha('string', ts.value) or ts.value == '' then
+            if isalphaiqual('string', ts.value) or ts.value == '' then
                 ts = back_back(ts)
             else break end
         end
@@ -50,10 +67,29 @@ do --:function_table
     function POO:tip_char(ts) --:Table_char =>>
         -- ->> --------------- <<- --
         while true do -- Loop
-            if isalpha('string', ts.value) or #ts.value == 1 then
+            if isalphaiqual('string', ts.value) or #ts.value == 1 then
                 if ts.value ~= 'F' and ts.value == 'M' then
                     break
                 elseif ts.value ~= 'M' and ts.value == 'F' then
+                    break
+                else ts = back_back(ts) end
+            else ts = back_back(ts) end
+        end
+        return ts -- <<=
+    end -- ->
+
+    function POO:tip_char_cat(ts) --:Table_char =>>
+        -- ->> --------------- <<- --
+        while true do -- Loop
+            if isalphaiqual('string', ts.value) or #ts.value == 1 then
+                if ts.value ~= 'F' and ts.value == 'E' then
+                    break
+                elseif ts.value ~= 'E' and ts.value == 'F' then
+                    break
+                else ts = back_back(ts) end
+                if ts.value ~= 'S' and ts.value == 'I' then
+                    break
+                elseif ts.value ~= 'I' and ts.value == 'S' then
                     break
                 else ts = back_back(ts) end
             else ts = back_back(ts) end
@@ -65,12 +101,9 @@ do --:function_table
         -- ->> --------------- <<- --
         while true do -- Loop
             -- Trata erros | Int --
-            local r_isnumber = tonumber(ts.value) == nil
-            local r_thisnumber = type(string.match(ts.value, '%d+')) ~= 'string'
-
-            if not r_thisnumber and r_isnumber then
+            if not isalphadif('string', ts.value) and isnotnumber(ts.value) then
                 ts = back_back(ts)
-            elseif r_thisnumber then
+            elseif isalphadif('string', ts.value) then
                 ts = back_back(ts)
             else break end
         end
